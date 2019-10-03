@@ -1,0 +1,87 @@
+{% load otree %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+
+        <h3>
+            Instrucciones
+        </h3>
+
+        <p>
+            <b>Instrucciones Generales</b>
+        </p>
+        <p>
+            Estás participando en un experimento científico que está financiado por X (cambiar de acuerdo a quien al que financie)
+            El propósito de este experimento es analizar la toma de decisiones en un mercado experimental. Si lee las instrucciones
+            cuidadosamente y toma las decisiones apropiadas, puede ganar una considerable cantidad de dinero.
+            <br/>
+            Aquí va una breve descripción del experimento. Una descripción más detallada se puede encontrar debajo. Todos los participantes
+            tienen el rol de firmas, vendiendo algún producto. En este experimento, hay dos tipos de firmas: una firma de tipo x y de tipo
+            y. Cada firma tiene que decidir un precio de venta en cada periodo. EL ingreso obtenido dependerá del precio que se escoja
+            y de los precios escogidos por el resto de firmas,
+        </p>
+
+        <p>
+            <b>Información detallada de las firmas de tipo {% player.role() %}</b>
+        </p>
+        <p>
+            El experimento durará 30 periodos. Tienes el rol de una firma justo como el resto de participantes en el experimento. Todos los
+            participantes están en un grupo de 4 participantes, es decir, cada participante estará en un grupo con otras 3 firmas. Hay dos
+            tipos de firmas de tipo x y dos de tipo y en cada grupo.
+        </p>
+
+        <p align="center">
+            <b>Eres una firma de tipo {% player.role() %}</b>
+        </p>
+
+        <p>
+            En cada periodo, todas las firmas deciden simultáneamente cuál será el precio de venta que propongan para el periodo actual.
+            Cada firma tiene que escoger un precio entero en el intervalo
+        </p>
+
+        <p align="center">
+            1 &le; precio de venta &le; 30
+        </p>
+
+        <p>
+            Este será redondeado al entero siguiente.
+        </p>
+
+        <p>
+            <b>¿Cómo leer la tabla de ingresos para una firma de tipo {% player.role() %}?</b>
+        </p>
+
+        <p>
+            La tabla de ingreso muestra tu ingreso nominal en puntos para un precio específico y para un promedio específico de los demás
+            en el presente periodo. TU ingreso al final del experimento no está basado en tus ingresos nominales, sino en su valor real.
+            La siguiente relación permanece constante en todos los periodos
+        </p>
+
+        <p align="center">
+            <b>Ingreso real = Ingreso nominal / Precio promedio de los demás</b>
+        </p>
+
+        <p>
+            <b>Lo que muestra la pantalla</b>
+        </p>
+        <p>
+            Se indicará en la parte superior izquierda el periodo y el tiempo restante que tienes en pantalla para decidir.
+        </p>
+        <p>
+            La parte superior tendrá 3 celdas que podrá completr con sus respuestas
+        </p>
+
+        <ul>
+            <li><b>Precio de venta:</b> Escriba un número entre 1 y 30 en la primera celda. Podrá cambiar su respuesta hasta que
+                se acabe el tiempo o decida ir a la siguiente página</li>
+            <li><b>Promedio esperado de los demás:</b> Escriba un número entre 1 y 30 en la primera celda. El número escrito no
+                afectará sus ingresos ni los de la otras firmas. Podrá cambiar su respuesta hasta que se acabe el tiempo o decida
+                ir a la siguiente página</li>
+            <li><b>Confianza:</b> Escoja alguna de las opciones disponibles en la lista desplegable de este campo</li>
+        </ul>
+        <p>
+            Apenas todas las firmas hayan decidido sus precios, pasará a la siguiente página, donde se podrán observar los resultados
+            de la ronda.
+        </p>
+</div>
+</div>

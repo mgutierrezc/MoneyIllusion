@@ -25,6 +25,8 @@ class Constants(BaseConstants):
     money = [42, 14]
     # Shock Round
     shock_round = 15
+    # Instructions
+    instructions_template = 'FT2001/instructions.html'
 
     # todo: Crear un config.py que tenga los valores de equilibrio para FT2001 y LP2014, y hacer que las constantes
     #  cambien para todo el juego de acuerdo a eso (con un custom session config parameter)
@@ -59,6 +61,7 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     sum_prices = models.FloatField(min=0, initial=0)
     shock_period = models.IntegerField()
+    total_payoff = models.FloatField(min=0, initial=0)
 
 
 class Player(BasePlayer):

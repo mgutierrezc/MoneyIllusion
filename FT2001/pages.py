@@ -18,7 +18,7 @@ class SettingPrice(Page):
         player = self.player
         group = self.group
         for p in players:
-            self.group.sum_prices += p.selling_price
+            group.sum_prices += p.selling_price
 
         # todo: Actualizar avg price al modelo de PW, porque ahora está en versión FT
         if self.round_number <= con.shock_round:
@@ -35,6 +35,8 @@ class SettingPrice(Page):
         player.payoff = con.V*((1+con.a*delta^2)/(1+con.b*delta^2))/\
                         (1+con.c*(epsilon-con.d*delta+con.e*math.atan(con.f*delta)))
 
+        for p in players:
+            group.total_payoff += p.payoff
 
 class ResultsWaitPage(WaitPage):
     def after_all_players_arrive(self):

@@ -7,7 +7,13 @@
 
 {% block content %}
 
+    <ul>
+        <li><b>Tu precio escogido:</b> {% formfield player.selling_price %}</li>
+        <li><b>Precio promedio de los demás:</b> {% formfield player.others_avg_price %}</li>
+        <li><b>Tus ingresos:</b> {% formfield player.payoff %}</li>
+    </ul>
     {% next_button %}
+
 {% endblock %}
 
 
