@@ -1,0 +1,146 @@
+<!doctype html>
+{% load otree static %}
+<html>
+<head>
+<meta charset="utf-8">
+<title>Table with highlighting</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<style style="text/css">
+  	table {
+  overflow: hidden;
+}
+
+tr:hover {
+  background-color: #ffa;
+}
+
+td, th {
+  position: relative;
+}
+td:hover::after,
+th:hover::after {
+  content: "";
+  position: absolute;
+  background-color: #ffa;
+  left: 0;
+  top: -5000px;
+  height: 10000px;
+  width: 100%;
+  z-index: -1;
+}
+</style>
+
+{% comment %}
+
+TODO: Completar los valores de los pagos con los de FT o LP
+<caption align="top">Tabla de pagos - Firma {{ player.role }} </caption>
+
+{% endcomment %}
+
+{% if player.role == 'x' %}
+
+<table width="200" align="center">
+    <thead>
+      <tr>
+        <th class="col">Height/Weight</th>
+        <th class="col">50kg</th>
+        <th class="col">55kg</th>
+        <th class="col">60kg</th>
+        <th class="col">65kg</th>
+        <th class="col">70kg</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="text-center">160cm</th>
+        <td>20</td>
+        <td>21</td>
+        <td>23</td>
+        <td>25</td>
+        <td>27</td>
+      </tr>
+
+      <tr>
+        <th class="text-center">165cm</th>
+        <td>18</td>
+        <td>20</td>
+        <td>22</td>
+        <td>24</td>
+        <td>26</td>
+      </tr>
+
+      <tr>
+        <th class="text-center">170cm</th>
+        <td>17</td>
+        <td>19</td>
+        <td>21</td>
+        <td>23</td>
+        <td>25</td>
+      </tr>
+
+      <tr>
+        <th class="text-center">175cm</th>
+        <td>16</td>
+        <td>18</td>
+        <td>20</td>
+        <td>22</td>
+        <td>24</td>
+      </tr>
+    <tbody>
+  </table>
+
+{% else %}
+
+<table width="200" align="center">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="col">50kg</th>
+        <th class="col">55kg</th>
+        <th class="col">60kg</th>
+        <th class="col">65kg</th>
+        <th class="col">70kg</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="text-center">160cm</th>
+        <td>20</td>
+        <td>21</td>
+        <td>23</td>
+        <td>25</td>
+        <td>27</td>
+      </tr>
+
+      <tr>
+        <th class="text-center">165cm</th>
+        <td>18</td>
+        <td>20</td>
+        <td>22</td>
+        <td>24</td>
+        <td>26</td>
+      </tr>
+
+      <tr>
+        <th class="text-center">170cm</th>
+        <td>17</td>
+        <td>19</td>
+        <td>21</td>
+        <td>23</td>
+        <td>25</td>
+      </tr>
+
+      <tr>
+        <th class="text-center">175cm</th>
+        <td>16</td>
+        <td>18</td>
+        <td>20</td>
+        <td>22</td>
+        <td>24</td>
+      </tr>
+    <tbody>
+  </table>
+
+{% endif %}

@@ -8,7 +8,7 @@ from otree.api import (
     Currency as c,
     currency_range,
 )
-
+import math
 
 author = 'Marco Gutierrez'
 
@@ -26,7 +26,9 @@ class Constants(BaseConstants):
     # Shock Round
     shock_round = 15
     # Instructions
-    instructions_template = 'FT2001/instructions.html'
+    instructions_template = 'FT2001/Instructions.html'
+    calculator_template = 'FT2001/Calculator.html'
+    table_template = 'FT2001/ResultsTable.html'
 
     # todo: Crear un config.py que tenga los valores de equilibrio para FT2001 y LP2014, y hacer que las constantes
     #  cambien para todo el juego de acuerdo a eso (con un custom session config parameter)
@@ -61,14 +63,36 @@ class Subsession(BaseSubsession):
 class Group(BaseGroup):
     sum_prices = models.FloatField(min=0, initial=0)
     shock_period = models.IntegerField()
-    total_payoff = models.FloatField(min=0, initial=0)
+    total_payoff = models.CurrencyField(min=0, initial=0)
+
+    def set_payoffs(self):
+        players = self.get_players()
+        con = Constants
+        for player in players:
+
+            player.others_avg_price = (self.sum_prices - player.selling_price) /(con.players_per_group - 1)
+            # Definiendo func de pagos reales FT2001
+            player.delta = (player.others_avg_price - con.eq_avg_prices_others[player.role()]) / con.money[self.shock_period]
+            player.epsilon = player.selling_price / con.money[self.shock_period] - con.eq_prices[player.role()] / con.money[
+                self.shock_period]
+
+            player.numer = con.V * ((1 + con.a * player.delta ** 2) / (1 + con.b * player.delta ** 2))
+            player.denom = (1 + con.c * ((player.epsilon - con.d * player.delta + con.e * math.atan(con.f * player.delta))**2))
+            player.payoff = c(player.numer /player.denom)
+
+        for player in players:
+            self.total_payoff += player.payoff
 
 
 class Player(BasePlayer):
     selling_price = models.FloatField(min=0, max=30, label='Tu precio de venta')
     others_avg_price = models.FloatField(min=0, max=30, label='Precio promedio de los demás')
     expected_price = models.FloatField(min=0, max=30, label='¿Cuál crees que sea el precio promedio de los demás?')
-    confidence = models.CharField(
+    delta = models.FloatField()
+    epsilon = models.FloatField()
+    numer = models.FloatField()
+    denom = models.FloatField()
+    confidence = models.IntegerField(
         choices=Constants.confidence_choices,
         label='¿Qué tanto confías en que el precio promedio que esperas que tengan los demás sea correcto?',
         widget=widgets.RadioSelect)

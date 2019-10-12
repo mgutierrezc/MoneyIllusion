@@ -1,4 +1,5 @@
 {% load otree %}
+{% load staticfiles otree_tags %}
 
 <div class="card bg-light instructions">
     <div class="card-body">
@@ -17,12 +18,12 @@
             <br/>
             Aquí va una breve descripción del experimento. Una descripción más detallada se puede encontrar debajo. Todos los participantes
             tienen el rol de firmas, vendiendo algún producto. En este experimento, hay dos tipos de firmas: una firma de tipo x y de tipo
-            y. Cada firma tiene que decidir un precio de venta en cada periodo. EL ingreso obtenido dependerá del precio que se escoja
+            y. Cada firma tiene que decidir un precio de venta en cada periodo. El ingreso obtenido dependerá del precio que se escoja
             y de los precios escogidos por el resto de firmas,
         </p>
 
         <p>
-            <b>Información detallada de las firmas de tipo {% player.role() %}</b>
+            <b>Información detallada de las firmas de tipo {{ player.role }}</b>
         </p>
         <p>
             El experimento durará 30 periodos. Tienes el rol de una firma justo como el resto de participantes en el experimento. Todos los
@@ -31,7 +32,7 @@
         </p>
 
         <p align="center">
-            <b>Eres una firma de tipo {% player.role() %}</b>
+            <b>Eres una firma de tipo {{ player.role }}</b>
         </p>
 
         <p>
@@ -48,7 +49,7 @@
         </p>
 
         <p>
-            <b>¿Cómo leer la tabla de ingresos para una firma de tipo {% player.role() %}?</b>
+            <b>¿Cómo leer la tabla de ingresos para una firma de tipo {{ player.role }}?</b>
         </p>
 
         <p>

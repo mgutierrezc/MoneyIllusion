@@ -10,12 +10,12 @@ SESSION_CONFIG_DEFAULTS = dict(
 )
 
 SESSION_CONFIGS = [
-    # dict(
-    #    name='public_goods',
-    #    display_name="Public Goods",
-    #    num_demo_participants=3,
-    #    app_sequence=['public_goods', 'payment_info']
-    # ),
+     dict(
+        name='FT2001',
+        display_name="Fehr and Tyran - 2001",
+        num_demo_participants=4,
+        app_sequence=['FT2001']
+     ),
 ]
 
 

@@ -2,15 +2,15 @@
 {% load otree static %}
 
 {% block title %}
-    Page title
+    Resultados
 {% endblock %}
 
 {% block content %}
 
     <ul>
-        <li><b>Tu precio escogido:</b> {% formfield player.selling_price %}</li>
-        <li><b>Precio promedio de los demás:</b> {% formfield player.others_avg_price %}</li>
-        <li><b>Tus ingresos:</b> {% formfield player.payoff %}</li>
+        <li><b>Tu precio escogido:</b> {{ price }}</li>
+        <li><b>Precio promedio de los demás:</b> {{ actual_avg }}</li>
+        <li><b>Tus ingresos:</b> {{ income }}</li>
     </ul>
     {% next_button %}
 
