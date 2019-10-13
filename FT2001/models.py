@@ -66,6 +66,10 @@ class Group(BaseGroup):
     total_payoff = models.CurrencyField(min=0, initial=0)
 
     def set_payoffs(self):
+        """
+        This function is the same for the real payoffs in FT2001 and in PW2014. The difference is in the
+        nominal payoffs.
+        """
         players = self.get_players()
         con = Constants
         for player in players:
@@ -78,7 +82,7 @@ class Group(BaseGroup):
 
             player.numer = con.V * ((1 + con.a * player.delta ** 2) / (1 + con.b * player.delta ** 2))
             player.denom = (1 + con.c * ((player.epsilon - con.d * player.delta + con.e * math.atan(con.f * player.delta))**2))
-            player.payoff = c(player.numer /player.denom)
+            player.payoff = c(round(player.numer/player.denom))
 
         for player in players:
             self.total_payoff += player.payoff
