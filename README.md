@@ -1,7 +1,7 @@
 # oTree replication of "Does Money Illusion Matter?" - Fehr and Tyran 2001 
 **Programmer:** Marco Gutierrez
 
-Initially, this project was created to replicate the experimental design done by the authors of this paper. Initially, this was done as a task for one of the professors I work with, but because the project was left behind, it's new purpose is to have an oTree version of this code that can be easily edited for future research projects.
+Initially, this project was created to replicate the experimental design done by the authors of this paper. This was done as a task for one of the professors I work with, but because the project was left behind, it's new purpose is to have an oTree version of this code that can be easily edited for future research projects.
 
 ## oTree App
 Located on the `FT2001` folder. There is still some work to be done like
