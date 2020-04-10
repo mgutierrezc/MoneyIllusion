@@ -35,7 +35,7 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
 DEMO_PAGE_INTRO_HTML = """ """
 
-SECRET_KEY = 'u@(0e392%9s9i6^#!7u9fjt#h-)94-8$c0n3)5#h^cwlpszob7'
+SECRET_KEY = environ.get('DJANGO_SECRET_KEY')
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
